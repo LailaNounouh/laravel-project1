@@ -21,5 +21,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        if (!\App\Models\User::where('email', 'admin@ehb.be')->exists()) {
+            \App\Models\User::create([
+                'name' => 'admin',
+                'email' => 'admin@ehb.be',
+                'password' => bcrypt('Password!321'),
+                'is_admin' => true,
+            ]);
+
     }
 }
